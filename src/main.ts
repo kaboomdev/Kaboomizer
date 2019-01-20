@@ -3,8 +3,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-// import "./assets/libs/js/bootstrap.min.js";
-// import "./assets/libs/js/popper.js";
 if (environment.production) {
   enableProdMode();
 }
