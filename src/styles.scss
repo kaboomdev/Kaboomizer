@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,500,700'");
+
+$green: #7edc95;
+$dgreen: #31b7ba;
+$red: #fb7b7c;
+
+body {
+    min-width: 320px;
+    font-family: "Raleway";
+    min-height: 100vh;
+    background: linear-gradient(to right, #11998e, #38ef7d);
+    color: #fff;
+}
+a[href]{
+    text-decoration: none;
+    color: #fff;
+}   
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1 {
+    font-family: "Lobster";
+}
+.kbm-bg-red{
+    background: $red;
+    color: #fff;
+    transition: 250ms ease-in-out;
+    &:hover {
+        color: #fff;
+        background: var(--danger);
+    }
+}
