@@ -1,27 +1,26 @@
-<div class="row"> 
-  <div class="col-12">
-    <img src="" alt="">
-    
-  </div>
+<div class="row mb-3"> 
+    <div class="col-lg-12 d-flex">
+        <div class="btn-group ml-auto">
+            <button type="button" class="btn kbm-bg-red dropdown-toggle">Options</button>
+            <ul class="dropdown-menu">
+              <li><a href="#">To Shopping List</a></li>
+              <li><a href="#">Edit recipe</a></li>
+              <li><a href="#">Delete Recipe</a></li>
+            </ul>
+          </div>
+    </div>
 </div>
 <div class="row">
+    <div class="col-12">
+        <img src="{{displayedRecipe.imgPath}}" alt="" class="recipe-img">
+      </div>
   <div class="col-lg-6">
-    <h3>Recipe Name</h3>
-  </div>
-  <div class="col-lg-6 d-flex">
-      <div class="btn-group ml-auto">
-          <button type="button" class="btn kbm-bg-red dropdown-toggle">Options</button>
-          <ul class="dropdown-menu">
-            <li><a href="#">To Shopping List</a></li>
-            <li><a href="#">Edit recipe</a></li>
-            <li><a href="#">Delete Recipe</a></li>
-          </ul>
-        </div>
+    <h3>{{displayedRecipe.name}}</h3>
   </div>
 </div>
 <div class="row">
   <div class="col-12">
-    Description
+    {{displayedRecipe.descr}}
   </div>
 </div>
 <div class="row">

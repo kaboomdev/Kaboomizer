@@ -1,20 +1,15 @@
-<div class="row">
+<div class="row mb-3">
   <div class="col-12">
     <button class="btn kbm-bg-red">New Recipe</button>
   </div>
 </div>
 <div class="row">
-  <div class="col-12 mb-5">
-    <a href="#" class="recipe-card" *ngFor="let recipe of recipes">
-      <div class="recipe-text-content">
-          <div class="recipe-heading">{{recipe.name}}</div>
-          <div class="recipe-text">{{recipe.descr}}</div>
-      </div>
-      <div class="recipe-thumbnail">
-        <img src="{{recipe.imgPath}}" alt="{{recipe.name}}">
-      </div>
-      <!-- <app-recipe-item></app-recipe-item> -->
-    </a>
+  <div class="col-12">
+      <app-recipe-item 
+      [recipe]="recipeItem" 
+      (selectedRecipe)="sendRecipe($event)"
+      *ngFor="let recipeItem of recipes"
+      ></app-recipe-item>
   </div>
 </div>
   

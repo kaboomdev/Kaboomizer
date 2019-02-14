@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output } from '@angular/core';
 import * as $ from 'jquery';
+import { EventEmitter } from '@angular/core';
+import { Ingredient } from '../../common/ingredient.model';
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
@@ -10,25 +12,26 @@ export class ShoppingEditComponent implements OnInit {
   @ViewChild('nameInput') nameInput : ElementRef;  
   @ViewChild('numberInput') numberInput : ElementRef;  
   
+  @Output() onAdd  = new EventEmitter;
+  
   constructor() { }
 
+  
   ngOnInit() {
     
-    console.log(this.nameInput) ;
   }
   
   clearInput(){
-    let inputs = document.querySelectorAll('input');
-    for (let i = 0; i < inputs.length; i++) {
-      inputs[i].value = "";
-    }
+    this.nameInput.nativeElement.value = "";
+    this.numberInput.nativeElement.value = "";
   }
   
-  
-  
-  
-  sendIngredient(){
-    
+
+  addIngredient(){
+    var name : string = this.nameInput.nativeElement.value;
+    var number : number = this.numberInput.nativeElement.value;
+    var ingredient = new Ingredient(name,number);
+    this.onAdd.emit(ingredient);
   }
   
   showForm(e) {

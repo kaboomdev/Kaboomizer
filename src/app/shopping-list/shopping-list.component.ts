@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ingredient } from '../common/ingredient.model';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-shopping-list',
@@ -12,9 +13,16 @@ export class ShoppingListComponent implements OnInit {
     new Ingredient('Tomatoes', 10),
     new Ingredient('Cucumber', 20)
   ];
-  constructor() { }
+  constructor(
+    private titleService: Title 
+  ) { }
 
   ngOnInit() {
+    this.titleService.setTitle( 'Kaboomizer - Shopping List' );
   }
 
+  
+  addIngredient(data : any){
+    this.ingredients.push(data);
+  }
 }

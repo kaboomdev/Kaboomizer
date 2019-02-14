@@ -37,9 +37,10 @@
                     font-size: 30px;
                     
                 }
-                &:hover {
+                &:hover, &.active {
                     color: $red;
                 }
+                
             }
         }
     }
