@@ -6,7 +6,8 @@
 /out-tsc
 
 # dependencies
-/node_modules
+/Back-end/node_modules
+/Front-end/node_modules
 
 # profiling files
 chrome-profiler-events.json
