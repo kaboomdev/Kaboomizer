@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Ingredient } from '../common/ingredient.model';
+import { Ingredient } from '../common/models/ingredient.model';
 import { Title } from '@angular/platform-browser';
+import { ShoppingListService } from '../common/services/shoppingList.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -8,21 +9,24 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./shopping-list.component.scss']
 })
 export class ShoppingListComponent implements OnInit {
-  ingredients : Ingredient[] = [
-    new Ingredient('Apples', 5),
-    new Ingredient('Tomatoes', 10),
-    new Ingredient('Cucumber', 20)
-  ];
+ 
+  ingredients : Ingredient[]  = [];
   constructor(
-    private titleService: Title 
+    private titleService: Title,
+    private slService : ShoppingListService,
   ) { }
 
   ngOnInit() {
+    this.ingredients = this.slService.getIngredients();
     this.titleService.setTitle( 'Kaboomizer - Shopping List' );
+    this.slService.ingredientAdded.subscribe((res)=> {
+      this.ingredients = res;
+    })
+    this.slService.addIngredients();
   }
 
   
   addIngredient(data : any){
-    this.ingredients.push(data);
+    
   }
 }

@@ -1,9 +1,9 @@
-<a (click)="onSelect($event)" class="recipe-card" >
+<a (click)="onSelect()" class="recipe-card">
     <div class="recipe-text-content">
         <div class="recipe-heading">{{recipe.name}}</div>
         <div class="recipe-text">{{recipe.descr}}</div>
     </div>
-    <div class="recipe-thumbnail">
+    <div class="recipe-thumbnail" >
       <img src="{{recipe.imgPath}}" alt="{{recipe.name}}">
     </div>
 </a>

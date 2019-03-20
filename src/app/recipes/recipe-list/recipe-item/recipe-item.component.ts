@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Recipe } from '../../recipes.model';
+import { Component, OnInit, Input } from '@angular/core';
+import { Recipe } from '../../../common/models/recipes.model';
 import * as $ from 'jquery';
+import { RecipeService } from 'src/app/common/services/recipe.service';
 
 @Component({
   selector: 'app-recipe-item',
@@ -9,11 +10,12 @@ import * as $ from 'jquery';
 })
 export class RecipeItemComponent implements OnInit {
 
-  constructor() { }
-
-  @Input() recipe : Recipe;
+  constructor(
+    private recipeService : RecipeService,
+  ) { }
   
-  @Output() selectedRecipe = new EventEmitter();
+  @Input() recipe : Recipe;
+
   
   ngOnInit() {
     $('.recipe-card').on('click', function(){
@@ -22,8 +24,9 @@ export class RecipeItemComponent implements OnInit {
     })
   }
 
-  onSelect($event){
-    $event.target.classList.add('active');
-    this.selectedRecipe.emit(this.recipe.id);
+  onSelect(){
+    this.recipeService.recipeSelected.emit(this.recipe.id);
   }
+  
+
 }

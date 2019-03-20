@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, Output } from '@angular/core';
 import * as $ from 'jquery';
 import { EventEmitter } from '@angular/core';
-import { Ingredient } from '../../common/ingredient.model';
+import { Ingredient } from '../../common/models/ingredient.model';
+import { ShoppingListService } from 'src/app/common/services/shoppingList.service';
+
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
@@ -12,9 +14,10 @@ export class ShoppingEditComponent implements OnInit {
   @ViewChild('nameInput') nameInput : ElementRef;  
   @ViewChild('numberInput') numberInput : ElementRef;  
   
-  @Output() onAdd  = new EventEmitter;
   
-  constructor() { }
+  constructor(
+    private slService : ShoppingListService,
+  ) { }
 
   
   ngOnInit() {
@@ -31,7 +34,7 @@ export class ShoppingEditComponent implements OnInit {
     var name : string = this.nameInput.nativeElement.value;
     var number : number = this.numberInput.nativeElement.value;
     var ingredient = new Ingredient(name,number);
-    this.onAdd.emit(ingredient);
+    this.slService.addIngredient(ingredient);
   }
   
   showForm(e) {

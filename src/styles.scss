@@ -35,3 +35,10 @@ h1 {
         background: var(--danger);
     }
 }
+
+.dropdown-menu {
+    background: $red;
+    .dropdown-item:hover{
+        color: inherit;
+    }
+}
